@@ -7,7 +7,7 @@ const App = () => {
   const { darkMode } = useSelector((state) => state.theme);
 
   return (
-    <div className={darkMode ? "inverse" : ""}>
+    <div className={darkMode ? "App inverse" : "App"}>
       <Header />
       <FilmList />
     </div>
