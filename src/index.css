@@ -1,5 +1,17 @@
-html, body, .App {
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
   height: 100%;
+}
+
+body {
+  height: 100vh;
 }
 
 .massive {
@@ -18,8 +30,11 @@ html, body, .App {
   margin-top: 10px;
 }
 
-.inverse {
+.App.inverse {
   background: black;
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .inverse .ui.card {
