@@ -5,14 +5,24 @@ import { Modal, Header, Form, Button } from "semantic-ui-react";
 import { addFilm, editFilm } from "../actions";
 import { formProperties } from "../helpers/formProperties";
 
+const initialState = {
+  Title:"",
+  Director:"",
+  Year:"",
+  Runtime:"",
+  Genre:"",
+  Poster:"",
+  imdbID:""
+}
+
 const FormFilmModal = ({
-  Title ="",
-  Director="",
-  Year="",
-  Runtime="",
-  Genre="",
+  Title,
+  Director,
+  Year,
+  Runtime,
+  Genre,
   Poster,
-  imdbID="",
+  imdbID,
   setOpen,
   open
 }) => {
@@ -32,7 +42,7 @@ const FormFilmModal = ({
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
-  const onSave = () => {
+  const submit = () => {
     const formValues = state;
     const errorsObject = validate(formValues);
     const isFormValid = _.isEmpty(errorsObject);
@@ -42,17 +52,13 @@ const FormFilmModal = ({
       } else {
         dispatch(editFilm(formValues));
       }
-      setOpen(false)
-      return;
+      setOpen(false);
+      setState(initialState);
     }
     setErrors(validate(formValues));
   };
 
   const films = useSelector((state) => state.films);
-
-  const onKeyPress = (target) => {
-    if (target.charCode === 13) onSave(state);
-  };
 
   const isDateValid = (val) => {
     const date = Date.parse(val);
@@ -82,7 +88,7 @@ const FormFilmModal = ({
     if (!Director) {
       errors.Director = `Must specify a director"s name`;
     }
-    if (Year.length !== 4 || !isDateValid(Year)) {
+    if (!Year || Year.length !== 4 || !isDateValid(Year)) {
       errors.Year = "Year must be entered with four digits, e.g. 1976";
     }
     if (!Genre) {
@@ -104,7 +110,7 @@ const FormFilmModal = ({
       >
       <Header icon={imdbID ? "pencil" : "add"} content={imdbID ? "Edit Film" : "Add Film"} />
       <Modal.Content>
-        <Form onKeyPress={onKeyPress}>
+        <Form onSubmit={submit}>
           {_.map(formProperties, (field, i) => {
             const { label, name } = field;
             return (
@@ -125,7 +131,7 @@ const FormFilmModal = ({
         <Button color="red" onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        <Button color="green" onClick={onSave}>
+        <Button color="green" onClick={submit}>
         {imdbID ? "Save Changes" : "Add Film"}
         </Button>
         </Modal.Actions>
