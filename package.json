@@ -1,5 +1,5 @@
 {
-  "name": "herolo_cinema",
+  "name": "cinema",
   "version": "0.1.0",
   "dependencies": {
     "axios": "^0.19.2",
