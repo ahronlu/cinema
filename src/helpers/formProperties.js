@@ -1,26 +1,26 @@
 export const formProperties = {
   poster: {
     label: "Poster URL",
-    name: "Poster"
+    name: "Poster",
   },
   title: {
     label: "Title",
-    name: "Title"
+    name: "Title",
   },
   director: {
     label: "Director",
-    name: "Director"
+    name: "Director",
   },
   year: {
     label: "Year",
-    name: "Year"
+    name: "Year",
   },
   genre: {
     label: "Genre",
-    name: "Genre"
+    name: "Genre",
   },
   runtime: {
     label: "Runtime",
-    name: "Runtime"
-  }
+    name: "Runtime",
+  },
 };

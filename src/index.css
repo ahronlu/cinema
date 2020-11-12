@@ -1,18 +1,28 @@
 .massive {
-    color: green;
-    position: sticky;
-    float: right;
-    bottom: 0%;
+  color: green;
+  position: sticky;
+  float: right;
+  bottom: 0%;
+}
+
+.moon,
+.sun {
+  cursor: pointer;
+}
+
+.ui.container {
+  margin-top: 10px;
 }
 
 .inverse {
-    background: black;
+  background: black;
 }
 
 .inverse .ui.card {
-    background: #1b1c1d;
+  background: #1b1c1d;
 }
 
-.inverse .description, .inverse .header {
-    color: rgba(255,255,255,.9)!important;
+.inverse .description,
+.inverse .header {
+  color: rgba(255, 255, 255, 0.9) !important;
 }

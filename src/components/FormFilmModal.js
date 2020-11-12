@@ -6,14 +6,14 @@ import { addFilm, editFilm } from "../actions";
 import { formProperties } from "../helpers/formProperties";
 
 const initialState = {
-  Title:"",
-  Director:"",
-  Year:"",
-  Runtime:"",
-  Genre:"",
-  Poster:"",
-  imdbID:""
-}
+  Title: "",
+  Director: "",
+  Year: "",
+  Runtime: "",
+  Genre: "",
+  Poster: "",
+  imdbID: "",
+};
 
 const FormFilmModal = ({
   Title,
@@ -24,7 +24,7 @@ const FormFilmModal = ({
   Poster,
   imdbID,
   setOpen,
-  open
+  open,
 }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState({
@@ -36,7 +36,7 @@ const FormFilmModal = ({
     Poster,
     imdbID,
   });
-  const [errors,setErrors] = useState({})
+  const [errors, setErrors] = useState({});
 
   const onInputChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -47,7 +47,7 @@ const FormFilmModal = ({
     const errorsObject = validate(formValues);
     const isFormValid = _.isEmpty(errorsObject);
     if (isFormValid) {
-      if(!imdbID) {
+      if (!imdbID) {
         dispatch(addFilm(formValues));
       } else {
         dispatch(editFilm(formValues));
@@ -101,28 +101,31 @@ const FormFilmModal = ({
   };
 
   return (
-      <Modal 
-        closeIcon
-        centered={false}
-        open={open}
-        onClose={() => setOpen(false)}
-        onOpen={() => setOpen(true)}
-      >
-      <Header icon={imdbID ? "pencil" : "add"} content={imdbID ? "Edit Film" : "Add Film"} />
+    <Modal
+      closeIcon
+      centered={false}
+      open={open}
+      onClose={() => setOpen(false)}
+      onOpen={() => setOpen(true)}
+    >
+      <Header
+        icon={imdbID ? "pencil" : "add"}
+        content={imdbID ? "Edit Film" : "Add Film"}
+      />
       <Modal.Content>
         <Form onSubmit={submit}>
           {_.map(formProperties, (field, i) => {
             const { label, name } = field;
             return (
-                <Form.Field
-                  key={i}
-                  control="input"
-                  label={label}
-                  name={name}
-                  value={state[name]}
-                  onChange={onInputChange}
-                  error={errors[name]}
-                />
+              <Form.Field
+                key={i}
+                control="input"
+                label={label}
+                name={name}
+                value={state[name]}
+                onChange={onInputChange}
+                error={errors[name]}
+              />
             );
           })}
         </Form>
@@ -132,10 +135,10 @@ const FormFilmModal = ({
           Cancel
         </Button>
         <Button color="green" onClick={submit}>
-        {imdbID ? "Save Changes" : "Add Film"}
+          {imdbID ? "Save Changes" : "Add Film"}
         </Button>
-        </Modal.Actions>
-      </Modal>
+      </Modal.Actions>
+    </Modal>
   );
 };
 
