@@ -1,3 +1,7 @@
+html, body, .App {
+  height: 100%;
+}
+
 .massive {
   color: green;
   position: sticky;
