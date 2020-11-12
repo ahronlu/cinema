@@ -1,10 +1,16 @@
 import React from 'react';
 import { Menu, Icon } from "semantic-ui-react";
 
-const Header = () => {
+const Header = ({setDarkMode,darkMode}) => {
     return (
-        <Menu>
+        <Menu inverted={darkMode}>
             <Menu.Item>Cinema</Menu.Item>
+            <Menu.Item
+                link
+                title="Dark/Light Mode"
+            >
+                <Icon name={darkMode ? "sun" : "moon"} onClick={() => setDarkMode(!darkMode)}  />
+            </Menu.Item>
             <Menu.Item
                 position="right"
                 as="a"
