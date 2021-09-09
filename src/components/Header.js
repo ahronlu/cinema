@@ -20,7 +20,7 @@ const Header = () => {
       <Menu.Item
         position="right"
         as="a"
-        href="https://github.com/koftov"
+        href="https://github.com/ahronlu"
         target="_blank"
         title="My Github"
       >
